@@ -1,5 +1,5 @@
 services:
-  agservice-storage:
+  agcode:
     build: .
     ports:
       - "10001:8000"
