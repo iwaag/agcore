@@ -1,9 +1,10 @@
 services:
-  agcode:
+  agcore:
     build: .
     ports:
       - "10001:8000"
     environment:
+      PRODUCT_ENV: ${PRODUCT_ENV}
       CLIENT_ID: ${CLIENT_ID}
       STORAGE_SERVICE_URL : ${STORAGE_SERVICE_URL}
       KEYCLOAK_URL: ${KEYCLOAK_URL}

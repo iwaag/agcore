@@ -75,7 +75,6 @@ class Project(SQLModel, table=True):
     title: str
     description: Optional[str] = None
 
-    # JSONB + MutableDict works best when Python-side value is dict.
     config: dict[str, Any] = Field(
         default_factory=dict,
         sa_column=Column(MutableDict.as_mutable(JSONB), nullable=False),
