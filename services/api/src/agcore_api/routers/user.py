@@ -1,7 +1,7 @@
 from typing import Annotated
 from fastapi import APIRouter, Depends, Header
-from agcore_api.db import database as db
-from agcore_api.models import models
+from agcore_domain.models import models
+from agcore_infra.db import database as db
 from agpyutils.auth import get_auth_info, AuthInfo
 
 router = APIRouter()

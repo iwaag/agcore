@@ -2,7 +2,7 @@ from typing import Any
 
 import httpx
 
-from agcore_api.core.common import (
+from agcore_infra.auth.common import (
     CLIEND_ID,
     KEYCLOAK_CLIENT_SECRET,
     KEYCLOAK_TOKEN_ENDPOINT,
