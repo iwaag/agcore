@@ -1,6 +1,8 @@
 services:
   agcore:
-    build: .
+    build:
+      context: ../..
+      dockerfile: services/api/Dockerfile
     ports:
       - "10001:8000"
     environment:

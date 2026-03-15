@@ -1,9 +1,9 @@
 import logging
 from fastapi import Depends, FastAPI, HTTPException, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
-from routers.user import router as user_router
-from routers.project import router as project_router
-from routers.brain_pile import router as brain_pile_router
+from agcore_api.routers.user import router as user_router
+from agcore_api.routers.project import router as project_router
+from agcore_api.routers.brain_pile import router as brain_pile_router
 
 app = FastAPI(
     title="agcore"

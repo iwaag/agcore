@@ -1,13 +1,13 @@
 from typing import Annotated
 from fastapi import APIRouter, Depends, Header
 from fastapi.responses import PlainTextResponse
-import db.database as db
-import models.models as models
+from agcore_api.db import database as db
+from agcore_api.models import models
 from agpyutils.auth import get_auth_info, AuthInfo
 import agpyutils.storage as storge
 from agpyutils.storage import StaticObjectRef
-from core.common import CLIEND_ID
-from core.keycloak_auth import issue_own_client_access_token
+from agcore_api.core.common import CLIEND_ID
+from agcore_api.core.keycloak_auth import issue_own_client_access_token
 
 DEFAULT_PROJECT_BG_KEY: str = "default_bg"
 

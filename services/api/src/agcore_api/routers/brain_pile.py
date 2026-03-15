@@ -1,7 +1,7 @@
 import logging
 from typing import Annotated
 from fastapi import APIRouter, Depends, Header
-import db.database as db
+from agcore_api.db import database as db
 
 
 router = APIRouter()

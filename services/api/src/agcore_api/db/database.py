@@ -2,7 +2,7 @@ import os
 from sqlalchemy import Engine
 from sqlmodel import SQLModel, Session, create_engine, select
 
-from models.models import BrainDrop, BrainPile, Project, ProjectUserLink, UserConfig, UserConfig, User
+from agcore_api.models.models import BrainDrop, BrainPile, Project, ProjectUserLink, UserConfig, UserConfig, User
 
 
 
