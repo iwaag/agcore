@@ -18,6 +18,7 @@ dependencies = [
     "sqlmodel",
     "psycopg2-binary",
     "nanoid",
+    "hatchet_sdk",
     "agpyutils @ git+https://github.com/iwaag/agpyutils.git@main",
 ]
 
