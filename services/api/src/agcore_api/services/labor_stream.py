@@ -11,7 +11,6 @@ from pydantic import BaseModel, HttpUrl
 
 hatchet = Hatchet()
 
-HATCHET_LABOR_USER_METADATA_KEY = "unmanaged_labor_user_id"
 HATCHET_LABOR_WORKFLOW_NAME = "labor"
 HATCHET_LABOR_LOOKBACK_DAYS = 30
 HATCHET_LABOR_LIST_LIMIT = 100
@@ -23,6 +22,9 @@ class LaborInfo(BaseModel):
     status: str
     redirect_url: HttpUrl
     created_at: datetime
+    hints: dict[str, str] | None = None
+    title: str | None = None
+    description: str | None = None
     started_at: datetime | None = None
     finished_at: datetime | None = None
     error_message: str | None = None
@@ -48,11 +50,18 @@ LABOR_LIST_EVENT_EXAMPLE = {
 }
 
 def _to_labor_info(run) -> LaborInfo | None:
-    redirect_url = run.input.get('input').get("redirect_url")
+    input = run.input.get('input')
+    redirect_url = input.get('redirect_url')
+    hints : dict[str, str] = input.get('hints')
+    title = input.get('meta').get('title')
+    description = input.get('meta').get('description')
     try:
         return LaborInfo(
+            title=title,
+            description=description,
             task_id=run.task_external_id,
             workflow_run_id=run.workflow_run_external_id,
+            hints=hints,
             status=run.status.value,
             redirect_url=redirect_url,
             created_at=run.created_at,
@@ -71,7 +80,8 @@ async def _list_labors_for_user(user_id: str) -> list[LaborInfo]:
         since=datetime.now(tz=timezone.utc) - timedelta(days=HATCHET_LABOR_LOOKBACK_DAYS),
         limit=HATCHET_LABOR_LIST_LIMIT,
         additional_metadata={
-            HATCHET_LABOR_USER_METADATA_KEY: user_id,
+            "user_id": user_id,
+            "type_id": "code_auth",
         },
         statuses=["QUEUED", "RUNNING"]
 
@@ -98,7 +108,7 @@ def _encode_sse(event: str, data: BaseModel | dict) -> bytes:
 
 async def stream_labors(request: Request, user_id: str) -> AsyncIterator[bytes]:
     listener = hatchet.listener.stream_by_additional_metadata(
-        HATCHET_LABOR_USER_METADATA_KEY,
+        "user_id",
         user_id,
     )
     last_payload: str | None = None
