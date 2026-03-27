@@ -9,9 +9,9 @@ from agcore_api.services.labor_stream import (
     LaborListEvent,
     create_labor_streaming_response,
 )
-from agpyutils.auth import get_auth_info, AuthInfo
+from agpy.auth import get_auth_info, AuthInfo
 from pydantic import BaseModel, HttpUrl
-from agpyutils.task import get_task_hub, models as task_models
+from agpy.task import get_task_hub, models as task_models
 
 router = APIRouter()
 task_hub = get_task_hub()

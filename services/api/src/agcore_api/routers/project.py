@@ -3,9 +3,9 @@ from fastapi import APIRouter, Depends, Header
 from fastapi.responses import PlainTextResponse
 from agcore_domain.models import models
 from agcore_infra.db import database as db
-from agpyutils.auth import get_auth_info, AuthInfo
-import agpyutils.storage as storge
-from agpyutils.storage import StaticObjectRef
+from agpy.auth import get_auth_info, AuthInfo
+import agpy.storage as storge
+from agpy.storage import StaticObjectRef
 from agcore_infra.auth.common import CLIEND_ID
 from agcore_infra.auth.keycloak_auth import issue_own_client_access_token
 

@@ -19,7 +19,7 @@ dependencies = [
     "psycopg2-binary",
     "nanoid",
     "hatchet_sdk",
-    "agpyutils @ git+https://github.com/iwaag/agpyutils.git@main",
+    "agpy @ git+https://github.com/iwaag/agpy.git@main",
 ]
 
 [build-system]

@@ -1,7 +1,7 @@
 import os
 
 from hatchet_sdk import ClientConfig, Hatchet
-from agpyutils.task import models
+from agpy.task import models
 from agcore_worker.tasks.utils import task_unmanaged_labor, task_labor_auth
 
 HATCHET_CLIENT_TOKEN = os.getenv("HATCHET_CLIENT_TOKEN")

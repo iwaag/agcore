@@ -1,5 +1,5 @@
 from hatchet_sdk import DurableContext, Hatchet
-from agpyutils.task import models
+from agpy.task import models
 
 hatchet = Hatchet()
 
